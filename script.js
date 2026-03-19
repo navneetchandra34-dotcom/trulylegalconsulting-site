@@ -1,8 +1,15 @@
-document.querySelector(".contact-form")
-.addEventListener("submit", function(e){
+const elements = document.querySelectorAll(".fade-in");
 
-e.preventDefault();
+window.addEventListener("scroll", () => {
 
-alert("Thank you. Your inquiry has been received.");
+elements.forEach(el => {
+const position = el.getBoundingClientRect().top;
+const screenHeight = window.innerHeight;
+
+if(position < screenHeight - 100){
+el.classList.add("show");
+}
+
+});
 
 });
