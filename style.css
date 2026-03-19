@@ -1,92 +1,101 @@
 body{
 margin:0;
-font-family:'Segoe UI',sans-serif;
-background:#0f0f0f;
+font-family:Arial, sans-serif;
+color:#333;
+}
+
+.container{
+width:90%;
+max-width:1100px;
+margin:auto;
+}
+
+.navbar{
+background:#3b2415;
 color:white;
-scroll-behavior:smooth;
+padding:15px 0;
+position:sticky;
+top:0;
 }
 
-/* GRADIENT BACKGROUND */
-.hero{
-height:100vh;
-background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+.nav-flex{
 display:flex;
+justify-content:space-between;
 align-items:center;
-position:relative;
 }
 
-.hero-overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.4);
+.logo{
+height:50px;
 }
 
-.hero-content{
-position:relative;
-text-align:center;
+.nav-links{
+display:flex;
+gap:20px;
+list-style:none;
 }
 
-.hero h1{
-font-size:42px;
-}
-
-/* BUTTONS */
-.btn-primary{
-background:#e94560;
-padding:12px 25px;
-border-radius:5px;
+.nav-links a{
 color:white;
 text-decoration:none;
 }
 
-.btn-secondary{
-border:1px solid white;
-padding:12px 25px;
-margin-left:10px;
+.hero{
+background:#e8d3b5;
+padding:100px 0;
+text-align:center;
 }
 
-/* GRID */
+.btn{
+background:#3b2415;
+color:white;
+padding:10px 20px;
+text-decoration:none;
+}
+
+.section{
+padding:70px 0;
+}
+
+.light{
+background:#f5f5f5;
+}
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+gap:20px;
 }
 
-/* CARDS */
 .card{
-background:rgba(255,255,255,0.05);
+background:white;
 padding:20px;
-border-radius:10px;
-transition:0.3s;
+border-radius:5px;
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.02);
+.contact-form{
+display:flex;
+flex-direction:column;
+gap:10px;
 }
 
-/* SECTIONS */
-.section{
-padding:100px 0;
+.contact-form input,
+.contact-form textarea{
+padding:10px;
 }
 
-.dark{
-background:#111;
-}
-
-/* CTA */
-.cta{
-background:linear-gradient(135deg,#e94560,#0f3460);
+footer{
+background:#3b2415;
+color:white;
 text-align:center;
-padding:80px 0;
+padding:20px;
 }
 
-/* FLOAT BUTTON */
-.whatsapp-float{
+.whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-padding:15px;
-border-radius:50%;
+color:white;
+padding:10px;
+text-decoration:none;
 }
