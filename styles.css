@@ -1,4 +1,8 @@
-
+.logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
 :root {
   --bg: #f7f1eb;
   --bg-alt: #fffaf6;
