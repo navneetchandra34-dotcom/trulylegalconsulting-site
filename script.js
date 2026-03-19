@@ -1,13 +1,13 @@
-const elements = document.querySelectorAll(".fade-in");
+const sections = document.querySelectorAll(".section");
 
 window.addEventListener("scroll", () => {
 
-elements.forEach(el => {
-const position = el.getBoundingClientRect().top;
-const screenHeight = window.innerHeight;
+sections.forEach(sec=>{
+const top = sec.getBoundingClientRect().top;
 
-if(position < screenHeight - 100){
-el.classList.add("show");
+if(top < window.innerHeight - 100){
+sec.style.opacity="1";
+sec.style.transform="translateY(0)";
 }
 
 });
