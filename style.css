@@ -3,6 +3,7 @@ margin:0;
 font-family:Arial;
 background:#f5f5f5;
 color:#333;
+scroll-behavior:smooth;
 }
 
 .container{
@@ -16,6 +17,7 @@ background:#3b2415;
 color:white;
 position:sticky;
 top:0;
+z-index:1000;
 }
 
 .nav-flex{
@@ -25,10 +27,14 @@ align-items:center;
 padding:15px 0;
 }
 
+.logo{
+height:50px;
+}
+
 .nav-links{
-list-style:none;
 display:flex;
 gap:20px;
+list-style:none;
 }
 
 .nav-links a{
@@ -38,8 +44,12 @@ text-decoration:none;
 
 .hero{
 background:#e8d3b5;
-padding:100px 0;
+padding:120px 0;
 text-align:center;
+}
+
+.hero h1{
+font-size:40px;
 }
 
 .btn-primary{
@@ -50,8 +60,8 @@ border-radius:5px;
 text-decoration:none;
 }
 
-.services,.about,.blog,.contact{
-padding:70px 0;
+.services,.about,.testimonials,.contact{
+padding:80px 0;
 background:white;
 }
 
@@ -64,25 +74,40 @@ gap:25px;
 .card{
 background:#f2f2f2;
 padding:20px;
-border-radius:8px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.fade-in{
+opacity:0;
+transform:translateY(20px);
+transition:all 0.6s ease;
+}
+
+.fade-in.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .contact-form{
 display:flex;
 flex-direction:column;
 gap:10px;
-margin-top:20px;
 }
 
 .contact-form input,
 .contact-form textarea{
-padding:10px;
+padding:12px;
 }
 
 .contact-form button{
 background:#3b2415;
 color:white;
-padding:10px;
+padding:12px;
 border:none;
 }
 
@@ -99,13 +124,21 @@ text-align:center;
 padding:25px;
 }
 
-.whatsapp-float{
+.whatsapp-float, .call-float{
 position:fixed;
-bottom:20px;
 right:20px;
-background:#25D366;
-color:white;
 padding:15px;
-border-radius:50px;
+border-radius:50%;
+color:white;
 text-decoration:none;
+}
+
+.whatsapp-float{
+bottom:20px;
+background:#25D366;
+}
+
+.call-float{
+bottom:80px;
+background:#3b2415;
 }
