@@ -1,144 +1,92 @@
 body{
 margin:0;
-font-family:Arial;
-background:#f5f5f5;
-color:#333;
+font-family:'Segoe UI',sans-serif;
+background:#0f0f0f;
+color:white;
 scroll-behavior:smooth;
 }
 
-.container{
-width:90%;
-max-width:1100px;
-margin:auto;
-}
-
-.navbar{
-background:#3b2415;
-color:white;
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.nav-flex{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 0;
-}
-
-.logo{
-height:50px;
-}
-
-.nav-links{
-display:flex;
-gap:20px;
-list-style:none;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-}
-
+/* GRADIENT BACKGROUND */
 .hero{
-background:#e8d3b5;
-padding:120px 0;
+height:100vh;
+background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+display:flex;
+align-items:center;
+position:relative;
+}
+
+.hero-overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+}
+
+.hero-content{
+position:relative;
 text-align:center;
 }
 
 .hero h1{
-font-size:40px;
+font-size:42px;
 }
 
+/* BUTTONS */
 .btn-primary{
-background:#3b2415;
-color:white;
+background:#e94560;
 padding:12px 25px;
 border-radius:5px;
+color:white;
 text-decoration:none;
 }
 
-.services,.about,.testimonials,.contact{
-padding:80px 0;
-background:white;
+.btn-secondary{
+border:1px solid white;
+padding:12px 25px;
+margin-left:10px;
 }
 
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
 
+/* CARDS */
 .card{
-background:#f2f2f2;
+background:rgba(255,255,255,0.05);
 padding:20px;
 border-radius:10px;
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-10px) scale(1.02);
 }
 
-.fade-in{
-opacity:0;
-transform:translateY(20px);
-transition:all 0.6s ease;
+/* SECTIONS */
+.section{
+padding:100px 0;
 }
 
-.fade-in.show{
-opacity:1;
-transform:translateY(0);
+.dark{
+background:#111;
 }
 
-.contact-form{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.contact-form input,
-.contact-form textarea{
-padding:12px;
-}
-
-.contact-form button{
-background:#3b2415;
-color:white;
-padding:12px;
-border:none;
-}
-
-.map iframe{
-width:100%;
-height:300px;
-border:0;
-}
-
-footer{
-background:#3b2415;
-color:white;
+/* CTA */
+.cta{
+background:linear-gradient(135deg,#e94560,#0f3460);
 text-align:center;
-padding:25px;
+padding:80px 0;
 }
 
-.whatsapp-float, .call-float{
+/* FLOAT BUTTON */
+.whatsapp-float{
 position:fixed;
+bottom:20px;
 right:20px;
+background:#25D366;
 padding:15px;
 border-radius:50%;
-color:white;
-text-decoration:none;
-}
-
-.whatsapp-float{
-bottom:20px;
-background:#25D366;
-}
-
-.call-float{
-bottom:80px;
-background:#3b2415;
 }
