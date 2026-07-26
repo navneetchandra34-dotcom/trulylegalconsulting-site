@@ -30,3 +30,34 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// WhatsApp Form Submission Handler
+const whatsappForm = document.getElementById('whatsappForm');
+
+if (whatsappForm) {
+  whatsappForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent standard page reload
+    
+    // Grab all values
+    const name = document.getElementById('userName').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    const service = document.getElementById('userService').value;
+    const message = document.getElementById('userMessage').value.trim();
+
+    // Construct the WhatsApp Message
+    const whatsappMessage = `*New Inquiry via TrulyLegal Website* 🚀\n\n*Name:* ${name}\n*Email:* ${email}\n*Service Required:* ${service}\n\n*Message/Requirements:*\n${message}`;
+
+    // Target Phone Number (Navneet Chandra)
+    const targetPhone = "919473182479";
+    
+    // URL Encode the message
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Create WhatsApp wa.me link
+    const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  });
+}
+
