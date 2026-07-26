@@ -312,3 +312,62 @@ h1, h2, h3, h4 { color: var(--text-dark); margin-top: 0; }
   .split-card { padding: 30px; }
   .cta-box { padding: 40px 20px; }
 }
+/* ==========================================
+   CONTACT PAGE & FORM STYLES
+   ========================================== */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 40px;
+  align-items: start;
+}
+.contact-info-cards {
+  display: grid;
+  gap: 24px;
+}
+.contact-info-cards h4 { margin-bottom: 12px; font-weight: 800; font-size: 1.1rem; }
+.contact-info-cards p { margin: 0; color: var(--text-muted); }
+.contact-info-cards a { color: var(--text-dark); font-weight: 600; text-decoration: underline; text-decoration-color: transparent; transition: 0.3s; }
+.contact-info-cards a:hover { text-decoration-color: var(--teal-main); color: var(--teal-main); }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.mb-4 { margin-bottom: 1.5rem; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group label {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+.form-control {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-main);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02) inset;
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--teal-main);
+  box-shadow: 0 0 0 4px var(--teal-bg);
+}
+.form-control::placeholder {
+  color: var(--text-light);
+}
+
+@media (max-width: 992px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}
