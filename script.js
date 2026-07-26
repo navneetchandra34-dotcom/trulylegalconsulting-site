@@ -20,7 +20,8 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('in-view');
-      observer.unobserve(entry.target);
+      // Uncomment the line below if you only want animations to trigger once
+      // observer.unobserve(entry.target);
     }
   });
 }, { 
@@ -29,26 +30,3 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Number Counter Animation for Stats
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    const target = parseInt(el.dataset.count || '0', 10);
-    const duration = 2000;
-    const start = performance.now();
-    
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      el.textContent = Math.round(target * eased) + (target > 10 ? '+' : '');
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    
-    requestAnimationFrame(step);
-    counterObserver.unobserve(el);
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
