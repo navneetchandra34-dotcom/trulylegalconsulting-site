@@ -1,4 +1,3 @@
-
 const docEl = document.documentElement;
 const navToggle = document.getElementById('navToggle');
 const siteNav = document.getElementById('siteNav');
@@ -48,6 +47,7 @@ themeToggle?.addEventListener('click', () => {
   localStorage.setItem('trulylegal-theme', next);
 });
 
+// Advanced scroll reveal
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -55,30 +55,32 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// Number Counter animation
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
     const target = parseInt(el.dataset.count || '0', 10);
-    const duration = 1200;
+    const duration = 1500;
     const start = performance.now();
     const step = (now) => {
       const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(target * eased);
+      const eased = 1 - Math.pow(1 - progress, 4); // Quartic ease out
+      el.textContent = Math.round(target * eased) + (target > 10 ? '+' : '');
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
     counterObserver.unobserve(el);
   });
-}, { threshold: 0.4 });
+}, { threshold: 0.5 });
 
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
+// Service Filtering
 const filters = document.querySelectorAll('.filter');
 const cards = document.querySelectorAll('.service-card');
 
@@ -91,11 +93,18 @@ filters.forEach(btn => {
     cards.forEach(card => {
       const cats = (card.dataset.category || '').split(' ');
       const show = filter === 'all' || cats.includes(filter);
-      card.style.display = show ? 'block' : 'none';
+      if (show) {
+        card.style.display = 'block';
+        setTimeout(() => card.style.opacity = '1', 10);
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => card.style.display = 'none', 300);
+      }
     });
   });
 });
 
+// Back to top behavior
 window.addEventListener('scroll', () => {
   if (window.scrollY > 500) backToTop.classList.add('show');
   else backToTop.classList.remove('show');
@@ -105,10 +114,26 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+// Dynamic Spotlight Mouse Tracking
+const handleOnMouseMove = e => {
+  const target = e.currentTarget;
+  const rect = target.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  target.style.setProperty('--mouse-x', `${x}px`);
+  target.style.setProperty('--mouse-y', `${y}px`);
+};
+
+document.querySelectorAll('.spotlight-card').forEach(card => {
+  card.addEventListener('mousemove', handleOnMouseMove);
+});
+
+// Form and Copy handlers
 copyInfoBtn?.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(contactText);
-    formHint.textContent = 'Contact details copied to clipboard.';
+    formHint.textContent = '✓ Contact details copied to clipboard.';
+    formHint.style.color = 'var(--accent-3)';
   } catch (err) {
     formHint.textContent = 'Copy failed on this device. You can still select and copy the details manually.';
   }
@@ -135,5 +160,5 @@ ${message}
 Sent from the TrulyLegal website.`
   );
 
-  formHint.innerHTML = `Ready-to-send message prepared. <a href="mailto:trulylegalconsulting@gmail.com?subject=${subject}&body=${body}">Open email draft</a> or use WhatsApp buttons above.`;
+  formHint.innerHTML = `✓ Ready-to-send message prepared. <a href="mailto:trulylegalconsulting@gmail.com?subject=${subject}&body=${body}" style="color:var(--accent); font-weight:bold; text-decoration:underline;">Open email draft</a> or use WhatsApp buttons above.`;
 });
