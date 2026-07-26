@@ -20,7 +20,6 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('in-view');
-      // Optional: stop observing once revealed
       observer.unobserve(entry.target);
     }
   });
@@ -37,12 +36,11 @@ const counterObserver = new IntersectionObserver((entries) => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
     const target = parseInt(el.dataset.count || '0', 10);
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const start = performance.now();
     
     const step = (now) => {
       const progress = Math.min((now - start) / duration, 1);
-      // Ease out expo
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       el.textContent = Math.round(target * eased) + (target > 10 ? '+' : '');
       if (progress < 1) requestAnimationFrame(step);
